@@ -1,11 +1,13 @@
 "use client"
 
-import { useEffect, useMemo, useState } from 'react'
+import { Suspense, useEffect, useMemo, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { toast } from 'react-hot-toast'
 import { Icon } from '@iconify/react'
 
-export default function Home() {
+export const dynamic = 'force-dynamic'
+
+function DashboardContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -168,5 +170,13 @@ export default function Home() {
         </main>
       </div>
     </div>
+  )
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="p-6">Loading...</div>}>
+      <DashboardContent />
+    </Suspense>
   )
 }

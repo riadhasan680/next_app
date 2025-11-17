@@ -1,17 +1,18 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { Suspense, useEffect, useMemo, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { toast } from 'react-hot-toast'
 import { Icon } from '@iconify/react'
 
-export default function AuthPage() {
+export const dynamic = 'force-dynamic'
+
+function AuthContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [token, setToken] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const [toast, setToast] = useState<string | null>(null)
 
   const toastParam = useMemo(() => searchParams.get('toast'), [searchParams])
 
@@ -80,5 +81,13 @@ export default function AuthPage() {
         <div className="mt-4 text-center text-xs text-gray-500">Login will not proceed without the correct token</div>
       </div>
     </main>
+  )
+}
+
+export default function AuthPage() {
+  return (
+    <Suspense fallback={<div className="p-6">Loading...</div>}>
+      <AuthContent />
+    </Suspense>
   )
 }
