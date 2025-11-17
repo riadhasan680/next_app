@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server'
 
 export function middleware(req: NextRequest) {
   const isAuth = req.cookies.get('session')?.value === '1'
-  if (!isAuth && req.nextUrl.pathname === '/') {
+  if (!isAuth && (req.nextUrl.pathname === '/' || req.nextUrl.pathname === '/flag')) {
     const url = req.nextUrl.clone()
     url.pathname = '/auth'
     return NextResponse.redirect(url)
