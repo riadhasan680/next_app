@@ -1,7 +1,7 @@
 'use client'
 
 import { Suspense, useEffect, useMemo, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
 import { Icon } from '@iconify/react'
 
@@ -9,18 +9,17 @@ export const dynamic = 'force-dynamic'
 
 function AuthContent() {
   const router = useRouter()
-  const searchParams = useSearchParams()
   const [token, setToken] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const toastParam = useMemo(() => searchParams.get('toast'), [searchParams])
-
   useEffect(() => {
-    if (toastParam) {
-      import('react-hot-toast').then((m) => m.toast.success(toastParam))
+    const sp = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null
+    const tp = sp?.get('toast')
+    if (tp) {
+      import('react-hot-toast').then((m) => m.toast.success(tp))
     }
-  }, [toastParam])
+  }, [])
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()

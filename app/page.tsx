@@ -55,10 +55,26 @@ function DashboardContent() {
       <div className="flex">
         <aside className={`fixed lg:static inset-y-16 lg:inset-auto left-0 w-64 bg-white border-r border-gray-200 transform transition-transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
           <nav className="p-4 space-y-1">
-            <a className="block px-3 py-2 rounded-md bg-brand/10 text-brand font-medium" href="#">Dashboard</a>
-            <a className="block px-3 py-2 rounded-md hover:bg-gray-100" href="#">Projects</a>
-            <a className="block px-3 py-2 rounded-md hover:bg-gray-100" href="#">Reports</a>
-            <a className="block px-3 py-2 rounded-md hover:bg-gray-100" href="#">Settings</a>
+            <a className="flex items-center gap-2 px-3 py-2 rounded-md bg-brand/10 text-brand font-medium" href="#">
+              <Icon icon="mdi:view-dashboard-outline" className="w-5 h-5" />
+              <span>Dashboard</span>
+            </a>
+            <a className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100" href="/flag">
+              <Icon icon="mdi:flag-outline" className="w-5 h-5 text-gray-700" />
+              <span>Flag</span>
+            </a>
+            <a className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100" href="#">
+              <Icon icon="mdi:folder-outline" className="w-5 h-5 text-gray-700" />
+              <span>Projects</span>
+            </a>
+            <a className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100" href="#">
+              <Icon icon="mdi:file-chart-outline" className="w-5 h-5 text-gray-700" />
+              <span>Reports</span>
+            </a>
+            <a className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100" href="#">
+              <Icon icon="mdi:cog-outline" className="w-5 h-5 text-gray-700" />
+              <span>Settings</span>
+            </a>
           </nav>
         </aside>
 
