@@ -57,10 +57,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <Icon icon="mdi:view-dashboard-outline" className="w-5 h-5" />
               <span>Dashboard</span>
             </a>
-            <a className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100" href="/flag">
-              <Icon icon="mdi:flag-outline" className="w-5 h-5 text-gray-700" />
-              <span>Flag</span>
-            </a>
+            
             <a className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100" href="#">
               <Icon icon="mdi:folder-outline" className="w-5 h-5 text-gray-700" />
               <span>Projects</span>
